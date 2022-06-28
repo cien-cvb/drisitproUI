@@ -1,0 +1,42 @@
+body{
+    font-size: medium;
+} 
+
+.student-tool-bar{
+    background-color: white;
+    justify-content: space-between;
+}
+
+table {
+   width: 100%;
+}
+
+thead{
+    color: gray;
+}
+
+
+i{
+    cursor: pointer;
+    color: #0037af;
+    margin-left: 5px;
+    font-size: large;
+}
+
+i:hover{
+    transition: all 150ms ease-in-out;
+    transform: scale(1.3);
+}
+
+#btn-delete{
+    color: rgb(154,19,33);
+}
+
+
+
+
+
+
+
+
+

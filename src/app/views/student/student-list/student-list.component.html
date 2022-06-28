@@ -1,0 +1,55 @@
+<body>
+  <div class="container-fluid pe-4 ps-4">
+    <div class="container-fluid d-flex pt-3 justify-content-between"> 
+      <h3 mat-subheader>Students</h3>
+      <button class="btn btn-primary btn-sm"  data-bs-toggle="modal" data-bs-target="#student-form-modal"> Add Student</button>
+    </div>
+    
+    <div class="container-fluid pt-3">
+      <!-- <label for="exampleDataList" class="form-label">Search Student</label> -->
+      <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+      <datalist id="datalistOptions">
+      <option value="San Francisco">
+      <option value="New York">
+      <option value="Seattle">
+      <option value="Los Angeles">
+      <option value="Chicago">
+      </datalist>
+    </div>
+    
+    <div class="container-fluid pt-3">
+      <div class="table-responsive">
+          <table class="table table-striped align-middle">
+            <thead>
+              <tr>
+                <th scope="col" hidden>Student ID</th>
+                <th scope="col">LTO Portal ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Contact #</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            
+            <tbody>
+              <tr *ngFor="let student of students">
+                <td scope="row" hidden>{{ student.studId }}</td>
+                <td scope="row">{{ student.studLtoPortalId }}</td>
+                <td scope="row">{{ student.studFirstName }} {{ student.studMiddleName }} {{ student.studLastName }} {{ student.studSuffix }}</td>
+                <td scope="row">{{ student.studContactNo }}</td>
+                <td scope="row">{{ student.studStatus }}</td>
+                <td>       
+                    <i class="material-symbols-outlined" (click)="onViewStudentDetails(student.studId)">
+                        visibility
+                    </i>
+                    <i class="material-symbols-outlined" id="btn-delete" (click)="onDeleteStudent(student.studId)">
+                        delete
+                    </i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      </div> 
+    </div>
+  </div>
+</body>

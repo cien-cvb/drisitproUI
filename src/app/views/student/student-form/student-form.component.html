@@ -1,0 +1,240 @@
+<form #form="ngForm" (ngSubmit) = "onSubmit(form)" autocomplete="off">
+    <div class="modal-header">
+        <h3 class="modal-title" id="studentModal">Student Form</h3 >
+        <button type="button" class="btn-close" type="reset" #reset data-bs-dismiss="modal" aria-label="Close" (click)="resetForm()"></button>
+    </div>
+
+    <input type="hidden" class="formControl" id="id"
+      [(ngModel)]="studentService.formData.studId" name="id">
+      
+    <div class="row">
+        <div class="col-md-12 mt-3">
+            <div class="form-group">
+                <label for="studFirstName"><span>*</span> First Name</label>
+                <input type="text" class="form-control form-control-sm" id="studFirstName"
+                    [(ngModel)] = "studentService.formData.studFirstName"
+                    #studFirstName="ngModel" name="studFirstName" autocomplete="off" required> 
+                <div class="empty-validation" *ngIf="studFirstName.invalid && studFirstName.touched">
+                    <small>This is a required field!</small>   
+                </div>   
+            </div>
+        </div>
+        
+        <div class="col-md-12 mt-3">
+            <div class="form-group">
+                <label><span>*</span> Middle Name</label>
+                <input type="text" class="form-control form-control-sm" id="studMiddleName"
+                    [(ngModel)] = "studentService.formData.studMiddleName"
+                    #studMiddleName="ngModel" name="studMiddleName" autocomplete="off" required> 
+                <div class="empty-validation" *ngIf="studMiddleName.invalid && studMiddleName.touched">
+                    <small>This is a required field!</small>   
+                </div>   
+            </div>
+        </div>   
+        
+        <div class="col-md-12 mt-3">
+            <div class="form-group">
+                <label><span>*</span> Last Name</label>
+                <input type="text" class="form-control form-control-sm" id="studLastName"
+                    [(ngModel)] = "studentService.formData.studLastName"
+                    #studLastName="ngModel" name="studLastname" autocomplete="off" required> 
+                <div class="empty-validation" *ngIf="studLastName.invalid && studLastName.touched">
+                    <small>This is a required field!</small>   
+                </div>   
+            </div>
+        </div>   
+
+        <div class="col-md-12 mt-3">
+            <div class="form-group">
+                <label><span>*</span> Suffix</label>
+                <input type="text" class="form-control form-control-sm" id="studSuffix"
+                    [(ngModel)] = "studentService.formData.studSuffix"
+                    #studSuffix="ngModel" name="studSuffix" autocomplete="off">
+            </div>
+        </div>   
+        
+        <div class="col-md-12 mt-3">
+            <div class="form-group">
+                <label><span>*</span> Gender</label>
+                <select class="form-select form-select-sm" id="studGender"
+                    [(ngModel)] = "studentService.formData.studGender"
+                    #studGender="ngModel" name="studGender" required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+                <div class="empty-validation" *ngIf="studGender.invalid && studGender.touched">
+                    <small>This is a required field!</small> 
+                </div>   
+            </div>
+        </div>
+
+        <div class="col-md-12 mt-3">    
+            <div class="form-group">
+                <label><span>*</span> Date of Birth</label>
+                <input id="birthdate" class="form-control form-control-sm" type="date" id="studDob"
+                    [(ngModel)] = "studentService.formData.studDob"
+                    #studDob="ngModel" name="studDob" required/>
+                <div class="empty-validation" *ngIf="studDob.invalid && studDob.touched">
+                    <small>This is a required field!</small>
+                </div>   
+            </div>
+        </div>
+        
+        <div class="col-md-12 mt-3">
+            <div class="form-group">
+                <label><span>*</span> Marital Status</label>
+                <select class="form-select form-select-sm" id="studMaritalStatus"
+                [(ngModel)] = "studentService.formData.studMaritalStatus"
+                #studMaritalStatus="ngModel" name="studMaritalStatus" required>
+                    <option value="Single">Single</option>
+                    <option value="Married">Married</option>
+                    <option value="Widowed">Widowed</option>
+                </select>
+                <div class="empty-validation" *ngIf="studMaritalStatus.invalid && studMaritalStatus.touched">
+                    <small>This is a required field!</small>
+                </div>   
+            </div>
+        </div>
+
+        <div class="col-md-12 mt-3">
+            <div class="form-group">
+                <label><span>*</span> Nationality</label>
+                <input type="text" class="form-control form-control-sm" id="studNationality"
+                    [(ngModel)] = "studentService.formData.studNationality"
+                    #studNationality="ngModel" name="nationality" autocomplete="off" required> 
+                <div class="empty-validation" *ngIf="studNationality.invalid && studNationality.touched">
+                    <small>This is a required field!</small>
+                </div>   
+            </div>
+        </div>
+        
+        <div class="col-md-12 mt-3">
+            <div class="form-group">
+                <label><span>*</span> LTO Portal ID</label>
+                <input type="text" class="form-control form-control-sm" id="studLtoPortalId"
+                    [(ngModel)] = "studentService.formData.studLtoPortalId"
+                    #studLtoPortalId="ngModel" name="lto_portal_id" autocomplete="off" required> 
+                <div class="empty-validation" *ngIf="studLtoPortalId.invalid && studLtoPortalId.touched">
+                    <small>This is a required field!</small>
+                </div>   
+            </div>
+        </div>
+
+        <div class="col-md-12 mt-3">
+            <div class="form-group">
+                <label><span>*</span> Driver's License Number</label>
+                <input type="text" class="form-control form-control-sm" id="studDln"
+                    [(ngModel)] = "studentService.formData.studDln"
+                    #studDln="ngModel" name="studDln" autocomplete="off" required> 
+                <div class="empty-validation" *ngIf="studDln.invalid && studDln.touched">
+                    <small>This is a required field!</small>
+                </div>   
+            </div>        
+        </div>
+        
+        <div class="col-md-12 mt-3">
+            <div class="form-group">
+                <label><span>*</span> Contact Number</label>
+                <input type="text" class="form-control form-control-sm" id="studContactNo"
+                    [(ngModel)] = "studentService.formData.studContactNo"
+                    #studContactNo="ngModel" name="studContactNo" autocomplete="off" required> 
+                <div class="empty-validation" *ngIf="studContactNo.invalid && studContactNo.touched">
+                    <small>This is a required field!</small>
+                </div>   
+            </div>
+        </div>
+
+        <div class="col-md-12 mt-3">
+            <div class="form-group">
+                <label><span>*</span> Email Address</label>
+                <input type="text" class="form-control form-control-sm" id="studEmail"
+                    [(ngModel)] = "studentService.formData.studEmail"
+                    #studEmail="ngModel" name="studEmail" autocomplete="off" required> 
+                <div class="empty-validation" *ngIf="studEmail.invalid && studEmail.touched">
+                    <small>This is a required field!</small>
+                </div>   
+            </div>
+        </div>
+
+        <div class="col-md-12 mt-3">
+            <div class="form-group">
+                <label><span>*</span> Region</label>
+                <input type="text" class="form-control form-control-sm" id="studRegion"
+                    [(ngModel)] = "studentService.formData.studRegion"
+                    #studRegion="ngModel" name="studRegion" autocomplete="off" required> 
+                <div class="empty-validation" *ngIf="studRegion.invalid && studRegion.touched">
+                    <small>This is a required field!</small>
+                </div>   
+            </div>
+        </div>
+
+        <div class="col-md-12 mt-3">
+            <div class="form-group">
+                <label><span>*</span> Province</label>
+                <input type="text" class="form-control form-control-sm" id="studProvince"
+                    [(ngModel)] = "studentService.formData.studProvince"
+                    #studProvince="ngModel" name="studProvince" autocomplete="off" required> 
+                <div class="empty-validation" *ngIf="studProvince.invalid && studProvince.touched">
+                    <small>This is a required field!</small>
+                </div>   
+            </div>
+        </div>
+    
+        <div class="col-md-12 mt-3">
+            <div class="form-group">
+                <label><span>*</span> City/Municipality</label>
+                <input type="text" class="form-control form-control-sm" id="studCity"
+                    [(ngModel)] = "studentService.formData.studCity"
+                    #studCity="ngModel" name="studCity" autocomplete="off" required> 
+                <div class="empty-validation" *ngIf="studCity.invalid && studCity.touched">
+                    <small>This is a required field!</small>
+                </div>   
+            </div>
+        </div>
+
+        <div class="col-md-12 mt-3">
+            <div class="form-group">
+                <label><span>*</span> Barangay</label>
+                <input type="text" class="form-control form-control-sm" id="studBrgy"
+                    [(ngModel)] = "studentService.formData.studBrgy"
+                    #studBrgy="ngModel" name="BRGY_DISTRICT" autocomplete="off" required> 
+                <div class="empty-validation" *ngIf="studBrgy.invalid && studBrgy.touched">
+                    <small>This is a required field!</small>
+                </div>   
+            </div>
+        </div>
+
+        <div class="col-md-12 mt-3">
+            <div class="form-group">
+                <label><span>*</span> Zip Code</label>
+                <input type="text" class="form-control form-control-sm" id="studZipCode"
+                    [(ngModel)] = "studentService.formData.studZipCode"
+                    #studZipCode="ngModel" name="studZipCode" autocomplete="off" required> 
+                <div class="empty-validation" *ngIf="studZipCode.invalid && studZipCode.touched">
+                    <small>This is a required field!</small>
+                </div>   
+            </div>            
+        </div>
+    
+        <div class="form-group  mt-3">
+            <label><span>*</span> Address Line</label>
+            <input type="text" class="form-control form-control-sm" id="studAddressLine"
+                [(ngModel)] = "studentService.formData.studAddressLine"
+                #studAddressLine="ngModel" name="studAddressLine" autocomplete="off" required> 
+            <div class="empty-validation" *ngIf="studAddressLine.invalid && studAddressLine.touched">
+                <small>This is a required field!</small>
+            </div>   
+        </div>
+
+        <div class="mb-3 mt-3">
+            <label for="formFileSm" class="form-label">Upload Attachment</label>
+            <input class="form-control form-control-sm" id="formFileSm" type="file">
+        </div>
+    </div>
+      
+    <div class="modal-footer">
+        <button class="btn btn-primary" style="margin-right: 5px" [disabled]="form.invalid" data-bs-dismiss="modal">Save</button>
+        <button (click)="onReset()" class="btn btn-danger" type="reset" #reset data-bs-dismiss="modal">Cancel</button>
+    </div>
+</form>
+

@@ -1,0 +1,54 @@
+<body>
+    <div class="container-fluid pe-4 ps-4"> 
+        <div class="container-fluid d-flex pt-3 justify-content-between"> 
+            <h3 mat-subheader>Instructors</h3>
+            <button class="btn btn-primary btn-sm"  data-bs-toggle="modal" data-bs-target="#instructor-form-modal"> Add Instructor</button>
+        </div>
+        
+        <div class="container-fluid pt-3 ">
+            <!-- <label for="exampleDataList" class="form-label">Search Student</label> -->
+            <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+            <datalist id="datalistOptions">
+            <option value="San Francisco">
+            <option value="New York">
+            <option value="Seattle">
+            <option value="Los Angeles">
+            <option value="Chicago">
+            </datalist>
+        </div>
+        
+        <div class="container-fluid pt-3">
+            <div class="table-responsive">
+                <table class="table table-striped align-middle">
+                    <thead>
+                      <tr>
+                        <th scope="col" hidden>Instructor ID</th>
+                        <th scope="col">Instructor LTO Portal ID</th>
+                        <th scope="col">Instructor Accreditation No.</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Contact #</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let instructor of instructors">
+                          <td scope="row" hidden>{{ instructor.instId }}</td>
+                          <td scope="row">{{ instructor.instLtoPid }}</td>
+                          <td scope="row">{{ instructor.instAccredNo }}</td>
+                          <td scope="row">{{ instructor.instFirstName }} {{ instructor.instLastName }} {{ instructor.instMiddleName }}</td>
+                          <td scope="row">{{ instructor.instContactNo }}</td>
+                          <td>       
+                              <i class="material-symbols-outlined" (click)="onViewInstructorDetails(instructor.instId)">
+                                  visibility
+                              </i>
+                              <i class="material-symbols-outlined" id="btn-delete" (click)="onDeleteInstructor(instructor.instId)">
+                                  delete
+                              </i>
+                          </td>
+                        </tr>
+                      </tbody>
+                  </table>
+            </div>        
+        </div>
+    </div>
+</body>

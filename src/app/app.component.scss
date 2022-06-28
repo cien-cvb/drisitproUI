@@ -1,0 +1,64 @@
+
+
+body{
+  font-family: Roboto, "Helvetica", sans-serif;
+} 
+
+ .sidebar-header{
+   background-color: white;
+ }
+
+ .sidebar-header img{
+  height: 5vh;
+}
+
+ mat-toolbar{
+      background-color: #0037AF;
+  }
+
+  mat-sidenav {
+    width: 25vh;
+    background-color: white;
+
+  }
+
+  mat-sidenav-content{
+    background-color: white;
+    height: 100vh;
+  }
+
+  .mat-sidebar-button{
+    height: 80px;
+    width: 100%;
+    font-size: small;
+    padding: 5px;
+    border-radius: 0%;
+    color: grey;
+  }
+
+.material-symbols-outlined-menu {
+  padding: 0%;
+  color: white;
+  cursor: pointer;
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 500,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+#burger-button{
+  color: white;
+}
+
+.student-tool-bar{
+  background-color: white;
+  justify-content: space-between;
+}
+
+button[disabled]{
+  background-color: lightblue;
+  color: black;
+}
+
+  

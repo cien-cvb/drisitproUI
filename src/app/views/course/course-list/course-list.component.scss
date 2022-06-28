@@ -1,0 +1,27 @@
+.card-img-top{
+    border-radius: 50%;
+    width: 10rem;
+    height: 10rem;
+    align-self: center;
+    margin-top: 10px;
+    padding: 2px;
+    background: rgb(0,55,175);
+}
+
+i{
+    cursor: pointer;
+    color: #0037af;
+    margin-left: 5px;
+
+}
+
+i:hover{
+    transition: all 150ms ease-in-out;
+    transform: scale(1.3);
+}
+
+.icon-delete{
+    color: rgb(154,19,33);
+}
+
+

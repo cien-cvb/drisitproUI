@@ -1,0 +1,252 @@
+<body>
+    <div class="container-fluid d-flex pt-3">
+        <i class="material-symbols-outlined" [routerLink]="['/instructors']">
+            arrow_back
+        </i>
+
+        <h3 mat-subheader>Instructor Overview</h3>
+    </div>
+    
+    <div class="container-fluid col-md-11 tab-pane fade show active" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+        <hr>
+        
+        <div class="container-fluid d-flex justify-content-between pt-3" >
+            <div class="container-fluid p-0" *ngIf="edit">
+                <h3>Edit Profile</h3> 
+                <button class="btn btn-sm btn-primary" (click)="populateForm(instructor)">Change profile picture</button>   
+            </div>
+            
+            <div class="container-fluid p-0" *ngIf="!edit">
+                <h3>Profile</h3>
+                <button class="btn btn-sm btn-primary" (click)="populateForm(instructor)">Edit Profile</button>   
+            </div> 
+            
+            <div class="flex-shrink-0">
+                <img src="assets\img\08.webp" class="card-img-top rounded-full" alt="Student Profile Picture">
+            </div>  
+        </div>
+
+        <div class="container-fluid" *ngIf="!edit">
+            <div class="table-responsive">
+                
+                <table class="table align-middle table-hover">
+                    <thead>
+                        <th class="col-md-8 col-sm-9"></th>
+                    </thead>
+
+                    <tbody>  
+                        <tr>
+                            <td>Name:</td>
+                            <th>{{ instructor.instFirstName}} {{ instructor.instMiddleName}} {{ instructor.instLastName}} {{ instructor.instSuffix}}</th>
+                        </tr>
+                        <tr>
+                            <td>LTO Portal ID:</td>
+                            <th>{{ instructor.instLtoPid }}</th>
+                        </tr>
+                        <tr>
+                            <td>Accreditation No.:</td>
+                            <th>{{ instructor.instAccredNo }}</th>
+                        </tr>
+                        <tr>
+                            <td>Driver's License No.:</td>
+                            <th>{{ instructor.instDln }}</th>
+                        </tr>
+                        <tr>
+                            <td>Address:</td>
+                            <th>{{instructor.instAddressLine}}, {{instructor.instBrgy}}, {{instructor.instCity}}, {{instructor.instProvince}}, Region {{instructor.instRegion}}, {{instructor.instZipCode}}</th>
+                        </tr>
+                        <tr>
+                            <td>Contact No.:</td>
+                            <th>{{instructor.instContactNo}}</th>
+                        </tr>
+                        <!-- <tr>
+                            <td>Email Address:</td>
+                            <th>{{ student.studEmail }}</th>
+                        </tr> --> 
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+
+        <form #form="ngForm" (ngSubmit) = "onSubmit(form)" autocomplete="off" *ngIf="edit" autocomplete="off" class="ps-3 pe-3">
+            <input type="hidden" class="formControl" id="instId"
+            [(ngModel)]="instructorService.formData.instId" name="instId">
+           
+            <div class="row">
+                <div class="col-md-12 mt-3">
+                    <div class="form-group">
+                        <label for="instFirstName"><span>*</span> First Name</label>
+                        <input type="text" class="form-control form-control-sm" id="instFirstName"
+                            [(ngModel)] = "instructorService.formData.instFirstName"
+                            #instFirstName="ngModel" name="instFirstName" autocomplete="off" required> 
+                        <div class="empty-validation" *ngIf="instFirstName.invalid && instFirstName.touched">
+                            <small>This is a required field!</small>   
+                        </div>   
+                    </div>
+                </div>
+            
+                <div class="col-md-12 mt-3">
+                    <div class="form-group">
+                        <label><span>*</span> Middle Name</label>
+                        <input type="text" class="form-control form-control-sm" id="instMiddleName"
+                            [(ngModel)] = "instructorService.formData.instMiddleName"
+                            #instMiddleName="ngModel" name="instMiddleName" autocomplete="off" required> 
+                        <div class="empty-validation" *ngIf="instMiddleName.invalid && instMiddleName.touched">
+                            <small>This is a required field!</small>   
+                        </div>   
+                    </div>
+                </div>   
+
+                <div class="col-md-12 mt-3">
+                    <div class="form-group">
+                        <label><span>*</span> Last Name</label>
+                        <input type="text" class="form-control form-control-sm" id="instLastName"
+                            [(ngModel)] = "instructorService.formData.instLastName"
+                            #instLastName="ngModel" name="instLastName" autocomplete="off" required> 
+                        <div class="empty-validation" *ngIf="instLastName.invalid && instLastName.touched">
+                            <small>This is a required field!</small>   
+                        </div>   
+                    </div>
+                </div>   
+
+                <div class="col-md-12 mt-3">
+                    <div class="form-group">
+                        <label><span>*</span> Suffix</label>
+                        <input type="text" class="form-control form-control-sm" id="instSuffix"
+                            [(ngModel)] = "instructorService.formData.instSuffix"
+                            #instSuffix="ngModel" name="instSuffix" autocomplete="off">
+                    </div>
+                </div>   
+            
+                <div class="col-md-12 mt-3">
+                    <div class="form-group">
+                        <label><span>*</span> LTO Portal ID</label>
+                        <input type="text" class="form-control form-control-sm" id="instLtoPid"
+                            [(ngModel)] = "instructorService.formData.instLtoPid"
+                            #instLtoPid="ngModel" name="instLtoPid" autocomplete="off" required> 
+                        <div class="empty-validation" *ngIf="instLtoPid.invalid && instLtoPid.touched">
+                            <small>This is a required field!</small>
+                        </div>   
+                    </div>
+                </div>
+
+                <div class="col-md-12 mt-3">
+                    <div class="form-group">
+                        <label><span>*</span> Driver's License Number</label>
+                        <input type="text" class="form-control form-control-sm" id="instDln"
+                            [(ngModel)] = "instructorService.formData.instDln"
+                            #instDln="ngModel" name="instDln" autocomplete="off" required> 
+                        <div class="empty-validation" *ngIf="instDln.invalid && instDln.touched">
+                            <small>This is a required field!</small>
+                        </div>   
+                    </div>        
+                </div>
+
+                <div class="col-md-12 mt-3">
+                    <div class="form-group">
+                        <label><span>*</span> Accreditation No.</label>
+                        <input type="text" class="form-control form-control-sm" id="instAccredNo"
+                            [(ngModel)] = "instructorService.formData.instAccredNo"
+                            #instAccredNo="ngModel" name="instAccredNo" autocomplete="off" required> 
+                        <div class="empty-validation" *ngIf="instAccredNo.invalid && instAccredNo.touched">
+                        <small>This is a required field!</small>
+                        </div>   
+                    </div>        
+                </div>
+            
+                <div class="col-md-12 mt-3">
+                    <div class="form-group">
+                        <label><span>*</span> Contact Number</label>
+                        <input type="text" class="form-control form-control-sm" id="instContactNo"
+                            [(ngModel)] = "instructorService.formData.instContactNo"
+                            #instContactNo="ngModel" name="instContactNo" autocomplete="off" required> 
+                        <div class="empty-validation" *ngIf="instContactNo.invalid && instContactNo.touched">
+                            <small>This is a required field!</small>
+                        </div>   
+                    </div>
+                </div>
+
+                <div class="col-md-12 mt-3">
+                    <div class="form-group">
+                        <label><span>*</span> Region</label>
+                        <input type="text" class="form-control form-control-sm" id="instRegion"
+                            [(ngModel)] = "instructorService.formData.instRegion"
+                            #instRegion="ngModel" name="instRegion" autocomplete="off" required> 
+                        <div class="empty-validation" *ngIf="instRegion.invalid && instRegion.touched">
+                            <small>This is a required field!</small>
+                        </div>   
+                    </div>
+                </div>
+
+                <div class="col-md-12 mt-3">
+                    <div class="form-group">
+                        <label><span>*</span> Province</label>
+                        <input type="text" class="form-control form-control-sm" id="instProvince"
+                            [(ngModel)] = "instructorService.formData.instProvince"
+                            #instProvince="ngModel" name="instProvince" autocomplete="off" required> 
+                        <div class="empty-validation" *ngIf="instProvince.invalid && instProvince.touched">
+                            <small>This is a required field!</small>
+                        </div>   
+                    </div>
+                </div>
+        
+                <div class="col-md-12 mt-3">
+                    <div class="form-group">
+                        <label><span>*</span> City/Municipality</label>
+                        <input type="text" class="form-control form-control-sm" id="instCity"
+                            [(ngModel)] = "instructorService.formData.instCity"
+                            #instCity="ngModel" name="instCity" autocomplete="off" required> 
+                        <div class="empty-validation" *ngIf="instCity.invalid && instCity.touched">
+                            <small>This is a required field!</small>
+                        </div>   
+                    </div>
+                </div>
+
+                <div class="col-md-12 mt-3">
+                    <div class="form-group">
+                        <label><span>*</span> Barangay</label>
+                        <input type="text" class="form-control form-control-sm" id="instBrgy"
+                            [(ngModel)] = "instructorService.formData.instBrgy"
+                            #instBrgy="ngModel" name="instBrgy" autocomplete="off" required> 
+                        <div class="empty-validation" *ngIf="instBrgy.invalid && instBrgy.touched">
+                            <small>This is a required field!</small>
+                        </div>   
+                    </div>
+                </div>
+
+                <div class="col-md-12 mt-3">
+                    <div class="form-group">
+                        <label><span>*</span> Zip Code</label>
+                        <input type="text" class="form-control form-control-sm" id="instZipCode"
+                            [(ngModel)] = "instructorService.formData.instZipCode"
+                            #instZipCode="ngModel" name="instZipCode" autocomplete="off" required> 
+                        <div class="empty-validation" *ngIf="instZipCode.invalid && instZipCode.touched">
+                            <small>This is a required field!</small>
+                        </div>   
+                    </div>            
+                </div>
+        
+    
+                <div class="form-group  mt-3">
+                    <label><span>*</span> Address Line</label>
+                    <input type="text" class="form-control form-control-sm" id="instAddressLine"
+                        [(ngModel)] = "instructorService.formData.instAddressLine"
+                        #instAddressLine="ngModel" name="instAddressLine" autocomplete="off" required> 
+                    <div class="empty-validation" *ngIf="instAddressLine.invalid && instAddressLine.touched">
+                        <small>This is a required field!</small>
+                    </div>   
+                </div>
+
+                <div class="mb-3 mt-3">
+                    <label for="formFileSm" class="form-label">Upload Attachment</label>
+                    <input class="form-control form-control-sm" id="formFileSm" type="file">
+                </div>
+            </div>
+        
+            <div class="modal-footer">
+                <button class="btn btn-primary" style="margin-right: 5px" [disabled]="form.invalid" data-bs-dismiss="modal">Save</button>
+                <button (click)="onReset()" class="btn btn-danger" type="reset" #reset data-bs-dismiss="modal">Cancel</button>
+            </div>
+        </form>
+    </div>
+</body>

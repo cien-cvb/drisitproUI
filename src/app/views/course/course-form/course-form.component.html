@@ -1,0 +1,63 @@
+<form #form="ngForm" (ngSubmit) = "onSubmit(form)" autocomplete="off">
+    <div class="modal-header">
+        <h3 class="modal-title" id="instructorModal">Course Form</h3 >
+        <button type="button" class="btn-close" type="reset" #reset data-bs-dismiss="modal" aria-label="Close" (click)="resetForm()"></button>
+    </div>
+    <input type="hidden" class="formControl" id="instId"
+      [(ngModel)]="courseService.formData.courseId" name="instId">
+
+    <div class="row">
+        <div class="col-md-12 mt-3">
+            <div class="form-group">
+                <label for="instFirstName"><span>*</span> Course Name</label>
+                <input type="text" class="form-control form-control-sm" id="courseName"
+                    [(ngModel)] = "courseService.formData.courseName"
+                    #courseName="ngModel" name="courseName" autocomplete="off" required> 
+                <div class="empty-validation" *ngIf="courseName.invalid && courseName.touched">
+                    <small>This is a required field!</small>   
+                </div>   
+            </div>
+        </div>
+          
+        <div class="col-md-12 mt-3">
+            <div class="form-group">
+                <label><span>*</span> Course Type</label>
+                <input type="text" class="form-control form-control-sm" id="courseType"
+                    [(ngModel)] = "courseService.formData.courseType"
+                    #courseType="ngModel" name="courseType" autocomplete="off" required> 
+                
+            <div class="empty-validation" *ngIf="courseType.invalid && courseType.touched">
+                <small>This is a required field!</small>   
+                </div>   
+            </div>
+        </div>   
+
+        <div class="col-md-12 mt-3">
+            <div class="form-group">
+                <label><span>*</span> Course Hours</label>
+                <input type="text" class="form-control form-control-sm" id="courseHours"
+                    [(ngModel)] = "courseService.formData.courseHours"
+                    #courseHours="ngModel" name="courseHours" autocomplete="off" required> 
+
+                <div class="empty-validation" *ngIf="courseHours.invalid && courseHours.touched">
+                    <small>This is a required field!</small>   
+                </div>   
+            </div>
+        </div>   
+
+        <div class="col-md-12 mt-3">
+            <div class="form-group">
+                <label><span>*</span> Course Fee</label>
+                <input type="text" class="form-control form-control-sm" id="courseFee"
+                    [(ngModel)] = "courseService.formData.courseFee"
+                    #courseFee="ngModel" name="courseFee" autocomplete="off">
+            </div>
+        </div>   
+    </div>
+      
+    <div class="modal-footer align-items-end">
+        <button class="btn btn-primary btn-md mb-3" style="margin-right: 10px" [disabled]="form.invalid" data-bs-dismiss="modal">Save</button>
+        <button (click)="onReset()" class="btn btn-danger mb-3" type="reset" #reset data-bs-dismiss="modal">Cancel</button>
+    </div>
+</form>
+
